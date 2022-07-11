@@ -1,0 +1,48 @@
+﻿@model Electronic_Bank.ViewModel.TransactionTransfer
+
+@{
+	ViewData["Title"] = "Transfer";
+}
+
+<h1 style="margin:50px">Transfer</h1>
+
+<hr />
+
+<body style="background: #f2edf3;">
+	<div class="col-md-10  stretch-card text-center" style="margin-left: 104px;">
+		<div class="card">
+			<form asp-action="Transfer">
+				<input type="hidden" asp-for="senderID" value="@ViewData["WalletID"]" />
+				<div class="card-body">
+					<h4 class="card-title text-white">Transfer</h4>
+
+					<div class="add-items d-flex">
+						<input class="form-control todo-list-input" placeholder="Transaction Amount" asp-for="Amount" class="form-control" />
+						<span asp-validation-for="Amount" class="text-danger"></span>
+					</div>
+					<div class="add-items d-flex form-control">
+						<label class="col-3">send to </label>
+
+						<select asp-for="receiverID" class="form-control" asp-items="ViewBag.Wallets"></select>
+
+						<span asp-validation-for="receiverID" class="text-danger"></span>
+
+					</div>
+					<input type="submit" value="Save" class="btn btn-primary" />
+					<a asp-action="Details"  asp-controller="Clients" asp-route-id="@ViewData["ClientID"]" class="btn btn-secondary">Back to List</a>
+
+				</div>
+			</form>
+		</div>
+	</div>
+
+</body>
+
+@*@section Scripts {
+	@{
+
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+	}
+		}
+*@

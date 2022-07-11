@@ -1,0 +1,41 @@
+﻿@model Electronic_Bank.Models.Wallet
+
+@{
+	ViewData["Title"] = "Create";
+}
+<div style="margin:50px">
+	<h1>Create</h1>
+
+	<h4>Wallet</h4>
+</div>
+<hr />
+<body style="background: #f2edf3;">
+	<div class="col-md-10  stretch-card text-center" style="margin-left: 104px;">
+		<div class="card">
+			<form asp-action="Create">
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+				<input type="hidden" asp-for="ClientID" value="@ViewBag.ClientID" />
+
+				<div class="card-body">
+					<h4 class="card-title text-white">Todo</h4>
+
+					<div class="add-items d-flex">
+						<input asp-for="WalletAmount" placeholder="Wallet Amount" class="form-control todo-list-input" />
+						<span asp-validation-for="WalletAmount" class="text-danger"></span>
+					</div>
+					<div class="add-items d-flex form-control">
+						<select asp-for="CurrencyID" placeholder="Wallet Amount" class="form-control todo-list-input" asp-items="ViewBag.CurrencyID"></select>
+					</div>
+
+					<input type="submit" value="Create" class="btn btn-primary" />
+					<a asp-action="Details" asp-controller="Clients" asp-route-id="@ViewBag.ClientID" class="btn btn-secondary">Back to List</a>
+				</div>
+			</form>
+		</div>
+	</div>
+
+</body>
+
+@*@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@

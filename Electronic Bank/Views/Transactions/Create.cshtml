@@ -1,0 +1,75 @@
+﻿@model Electronic_Bank.Models.Transaction
+
+@{
+	ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Transaction</h4>
+<hr />
+
+
+
+<body style="background: #f2edf3;">
+	<div class="col-md-10  stretch-card text-center" style="margin-left: 104px;">
+		<div class="card">
+			<form asp-action="Create">
+				<input type="hidden" asp-for="TransactionID" />
+				<div class="card-body">
+					<h4 class="card-title text-white">Todo</h4>
+
+					<div class="add-items d-flex">
+						<select asp-for="TransactionType" class="form-control todo-list-input" placeholder="Transaction Type ">
+
+							<option value="withdraw">withdraw</option>
+							<option value="deposit">deposit</option>
+							<option value="transfer">transfer</option>
+						</select>
+
+						<span asp-validation-for="TransactionType" class="text-danger"></span>
+					</div>
+
+					<div class="add-items d-flex">
+						<input class="form-control todo-list-input" placeholder="Transaction Amount" asp-for="TransactionAmount" class="form-control" />
+						<span asp-validation-for="TransactionAmount" class="text-danger"></span>
+					</div>
+					<div class="add-items d-flex">					
+						<span asp-validation-for="TransactionDate" class="text-danger"></span>
+
+					</div>
+					<div class="add-items d-flex">
+						<input hidden class="form-control todo-list-input" placeholder="Transaction Description" asp-for="TransactionDescription" class="form-control" />
+						<span asp-validation-for="TransactionDescription" class="text-danger"></span>
+
+					</div>
+					<div class="add-items d-flex">
+						<select asp-for="WalletID" class="form-control" asp-items="ViewBag.WalletID"></select>
+						<span asp-validation-for="WalletID" class="text-danger"></span>
+
+					</div>
+					@*<input type="submit" value="Save" class="add btn btn-gradient-primary font-weight-bold todo-list-add-btn" />*@
+					<input type="submit" value="Save" class="btn btn-primary" />
+					<a asp-action="Index" class="btn btn-secondary">Back to List</a>
+
+
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+	<div>
+		@*	<a asp-action="Index">Back to List</a>*@
+	</div>
+
+</body>
+
+@*@section Scripts {
+	@{
+
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+	}
+		}
+*@

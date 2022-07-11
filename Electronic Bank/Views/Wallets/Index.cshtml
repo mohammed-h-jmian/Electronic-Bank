@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Electronic_Bank.Models.Wallet>
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+
+<div class="col-md-12">
+	<div class="content-wrapper">
+		<div class="page-header">
+			<h3 class="page-title">
+				<span class="page-title-icon bg-gradient-primary text-white me-2">
+					<i class="mdi mdi-home"></i>
+				</span> Client Wallets
+			</h3>
+			<nav aria-label="breadcrumb">
+				<ul class="breadcrumb">
+					<li class="breadcrumb-item active" aria-current="page">
+					</li>
+				</ul>
+			</nav>
+		</div>
+
+		@if (Model != null)
+		{
+			<div class="row">
+				@foreach (var item in Model)
+				{
+					<div class="col-md-4 stretch-card grid-margin">
+						<div class="card bg-gradient-danger card-img-holder text-white">
+							<div class="card-body">
+								<img src="~/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+								<h4 class="font-weight-normal mb-3">
+									Wallet ID @item.WalletID <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+								</h4>
+								<h2 class="mb-5">@item.Currencys.CurrencyCode  @item.WalletAmount </h2>
+								<h6 class="card-text">
+
+									@item.Clients.ClientName
+
+								</h6>
+							</div>
+						</div>
+					</div>
+				}
+			</div>
+
+		}
+		else
+		{
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+				<strong>Unfortunately !</strong>  there are no wallets for this user, do
+				Add a wallet
+
+			</div>
+		}
+
+
+
+
+	</div>
+</div>

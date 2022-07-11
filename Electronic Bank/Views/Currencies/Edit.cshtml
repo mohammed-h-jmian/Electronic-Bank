@@ -1,0 +1,47 @@
+﻿@model Electronic_Bank.Models.Currency
+
+@{
+	ViewData["Title"] = "Edit";
+}
+<div style="margin:50px">
+
+	<h1>Edit</h1>
+
+	<h4>Currency</h4>
+
+</div>
+<hr />
+
+<body style="background: #f2edf3;">
+	<div class="col-md-10  stretch-card text-center" style="margin-left: 104px;">
+		<div class="card">
+			<form asp-action="Edit">
+				<input type="hidden" asp-for="CurrencyID" />
+				<div class="card-body">
+					<h4 class="card-title text-white">Todo</h4>
+
+					<div class="add-items d-flex">
+						<input type="text" class="form-control todo-list-input" placeholder="Currency Name" asp-for="CurrencyName"  />
+
+					</div>
+					<div class="add-items d-flex">
+						<input class="form-control todo-list-input" placeholder="Currency Code" asp-for="CurrencyCode"  />
+
+					</div>
+						<div class="add-items d-flex">
+						<input class="form-control todo-list-input" placeholder="Currency Price" asp-for="CurrencyPrice"  />
+
+					</div>
+
+					<input type="submit" value="Save" class="btn btn-primary" />
+					<a asp-action="Index" class="btn btn-secondary">Back to List</a>
+				</div>
+			</form>
+		</div>
+	</div>
+
+</body>
+@*@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+*@

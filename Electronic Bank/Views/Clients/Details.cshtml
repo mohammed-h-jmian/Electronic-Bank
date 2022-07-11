@@ -1,0 +1,113 @@
+﻿@model Electronic_Bank.Models.Client
+
+
+@{
+	ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+
+
+	@**************************************@
+
+	<a href="#" class="nav-link" style="margin-left: 20px;">
+		<div class="nav-profile-image">
+
+			<img src="~/images/ProfileImage/@Model.ClientImg" alt="profile">
+			<span class="login-status online"></span>
+			<!--change to offline or busy as needed-->
+		</div>
+		<div class="nav-profile-text d-flex flex-column">
+			<span class="font-weight-bold mb-2">	@Html.DisplayFor(model => model.ClientName)</span>
+			<span class="text-secondary text-small">	@Html.DisplayFor(model => model.ClientAddress)  /	@Html.DisplayFor(model => model.ClientPhone)</span>
+		</div>
+		<i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
+	</a>
+
+	<div class="content-wrapper">
+		<div class="page-header">
+			<h3 class="page-title">
+				<span class="page-title-icon bg-gradient-primary text-white me-2">
+					<i class="mdi mdi-home"></i>
+				</span> Client Wallets
+			</h3>
+			<nav aria-label="breadcrumb">
+				<ul class="breadcrumb">
+					<li class="breadcrumb-item active" aria-current="page">
+						<a asp-action="Create" asp-controller="Wallets" asp-route-id="@Model.ClientID" class="btn">Create Wallet </a> <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		@if (Model.ClientWallets != null)
+		{
+			<div class="row">
+				@foreach (var item in Model.ClientWallets)
+				{
+
+					<div class="col-md-4 stretch-card grid-margin">
+						<div class="card bg-gradient-danger card-img-holder text-white">
+							<div class="card-body">
+								<h4 class="font-weight-normal mb-3">
+									Wallet ID @item.WalletID <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+								</h4>
+								@foreach (var item1 in ViewBag.currancy)
+								{
+									if (item.CurrencyID == item1.CurrencyID)
+									{
+										<h2 class="mb-5">
+											@item1.CurrencyCode	@item.WalletAmount
+										</h2>
+
+									}
+								}
+
+								<div class="row" style="flex-wrap: nowrap;">
+
+									<a asp-action="Withdraw" asp-controller="Transactions" asp-route-walletId="@item.WalletID" asp-route-clientId="@item.ClientID" class="col-md-4 card-text btn " style="padding:0;">
+										withdraw
+									</a>
+									<a asp-action="Deposit" asp-controller="Transactions" asp-route-walletId="@item.WalletID" asp-route-clientId="@item.ClientID" class="col-md-4 card-text btn " style="padding:0;">
+										deposit
+									</a>
+									<a asp-action="Transfer" asp-controller="Transactions" asp-route-walletId="@item.WalletID" asp-route-clientId="@item.ClientID" class="col-md-4 card-text btn " style="padding:0;">
+										transfer
+									</a>
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				}
+			</div>
+		}
+		else
+		{
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+				<strong>Unfortunately !</strong>  there are no wallets for this user, do
+				Add a wallet
+
+			</div>
+		}
+
+
+
+
+
+
+	</div>
+	<!-- content-wrapper ends -->
+	@*  <dd class = "col-sm-10">
+	@Html.DisplayFor(model => model.ClientPhone)
+	</dd>*@
+
+	</dl>
+</div>
+<br />
+<div>
+	<a asp-action="Index" class="btn btn-secondary text-center">Back to List</a>
+</div>

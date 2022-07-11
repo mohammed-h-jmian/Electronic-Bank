@@ -1,0 +1,62 @@
+﻿@model Electronic_Bank.Models.Transaction
+
+@{
+	ViewData["Title"] = "Withdraw";
+}
+
+
+<div style="margin:50px">		
+	<h1>Withdraw</h1>
+
+<h4>Transaction</h4>
+
+<hr /></div>
+
+<body style="background: #f2edf3;">
+	<div class="col-md-10  stretch-card text-center" style="margin-left: 104px;">
+		<div class="card">
+
+			<form asp-action="Withdraw">
+				<div class="card-body">
+					<h4 class="card-title text-white">Todo</h4>
+
+					<div class="add-items d-flex">
+						<select hidden asp-for="TransactionType" class="form-control todo-list-input" placeholder="Transaction Type "/>
+					
+						<span asp-validation-for="TransactionType" class="text-danger"></span>
+					</div>
+
+					<div class="add-items d-flex">
+						<input class="form-control todo-list-input" placeholder="Transaction Amount" asp-for="TransactionAmount" class="form-control" />
+						<span asp-validation-for="TransactionAmount" class="text-danger"></span>
+					</div>
+	
+		@*			<div class="add-items d-flex">
+						<input class="form-control todo-list-input" placeholder="Transaction Description" asp-for="TransactionDescription" />
+						<span asp-validation-for="TransactionDescription" class="text-danger"></span>
+
+					</div>*@
+					<div class="add-items d-flex">
+					<input hidden class="form-control todo-list-input" asp-for="WalletID"  value="@ViewData["WalletID"]" />
+
+						<span asp-validation-for="WalletID" class="text-danger"></span>
+
+					</div>
+					<input type="submit" value="Save" class="btn btn-primary" />
+					<a asp-action="Details"  asp-controller="Clients" asp-route-id="@ViewData["ClientID"]" class="btn btn-secondary">Back to List</a>
+
+
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+
+@*@section Scripts {
+	@{
+
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+	}
+		}
+*@

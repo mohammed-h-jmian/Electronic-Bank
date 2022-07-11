@@ -1,0 +1,53 @@
+﻿@model Electronic_Bank.Models.Currency
+
+@{
+	ViewData["Title"] = "Details";
+}
+
+<h1 style="margin:50px">Currency Details</h1>
+
+<body style="background: #f2edf3;">
+	<div class="col-md-10  stretch-card text-center" style="margin-left: 104px;">
+		<div class="card">
+
+			<div class="card-body">
+				<h4 class="card-title text-white">Todo</h4>
+
+				<div class="add-items d-flex">
+					<div class="col-3">
+						@Html.DisplayNameFor(model => model.CurrencyName)
+					</div>
+					<input disabled type="text" class="form-control todo-list-input" placeholder="Client Name " asp-for="CurrencyName"/>
+
+				</div>
+				<div class="add-items d-flex">
+					<div class="col-3">     @Html.DisplayNameFor(model => model.CurrencyCode)  </div>
+
+					<input disabled class="form-control todo-list-input" placeholder="Client Address" asp-for="CurrencyCode"  />
+
+				</div>
+					<div class="add-items d-flex">
+					<div class="col-3">     @Html.DisplayNameFor(model => model.CurrencyPrice)  </div>
+
+					<input disabled class="form-control todo-list-input" placeholder="Client Address" asp-for="CurrencyPrice"  />
+
+				</div>
+
+
+				<form asp-action="Delete">
+					<input type="hidden" asp-for="CurrencyID" />
+					<a asp-action="Index" class="btn btn-secondary">Back to List</a>
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+
+</body>
+
+
+
+
+
+

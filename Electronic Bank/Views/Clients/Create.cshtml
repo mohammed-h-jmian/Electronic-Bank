@@ -1,0 +1,58 @@
+﻿@model Electronic_Bank.Models.Client
+
+@{
+	ViewData["Title"] = "Create";
+}
+<div style="margin:50px">
+<h1>Create</h1>
+<h4>Client</h4>
+<hr />
+
+</div>
+
+<body style="background: #f2edf3;">
+	<div class="col-md-10  stretch-card text-center" style="margin-left: 104px;">
+		<div class="card">
+			<form asp-action="Create">
+				<input type="hidden" asp-for="ClientID" />
+				<div class="card-body">
+					<h4 class="card-title text-white">Todo</h4>
+
+					<div class="add-items d-flex">
+						<input type="text" class="form-control todo-list-input" placeholder="Client Name " asp-for="ClientName"  />
+						<span asp-validation-for="ClientName" class="text-danger"></span>
+					</div>
+					<div class="add-items d-flex">
+						<input class="form-control todo-list-input" placeholder="Client Address" asp-for="ClientAddress"  />
+						<span asp-validation-for="ClientAddress" class="text-danger"></span>
+					</div>
+					<div class="add-items d-flex">
+						<input class="form-control todo-list-input" placeholder="Client Phone Number" asp-for="ClientPhone" />
+						<span asp-validation-for="ClientPhone" class="text-danger"></span>
+
+					</div>
+						<div class="add-items d-flex">
+						<input type="file" class="form-control todo-list-input" placeholder="Client profile Image" asp-for="ClientImg" />
+						<span asp-validation-for="ClientPhone" class="text-danger"></span>
+
+					</div>
+					<input type="submit" value="Save" class="btn btn-primary" />
+					<a asp-action="Index" class="btn btn-secondary">Back to List</a>
+
+
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+	<div>
+		@*	<a asp-action="Index">Back to List</a>*@
+	</div>
+
+</body>
+@*
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+*@

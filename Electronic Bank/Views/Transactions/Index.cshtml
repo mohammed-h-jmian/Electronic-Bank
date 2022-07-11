@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Electronic_Bank.Models.Transaction>
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+
+<div class="row" style="margin:20px; flex-wrap: nowrap;">
+	<h1 class="col-10">Transaction</h1>
+
+	<p class="col-2">
+		@*<a class="btn btn-success" asp-action="Create">Create New</a>*@
+	</p>
+</div>
+<body style="    background: #f2edf3;">
+	<div class="row">
+		<div class="col-12 grid-margin">
+			<div class="card" style="margin:25px">
+				<div class="card-body">
+					<h4 class="card-title">Transactions</h4>
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th> Wallet ID </th>
+									<th> Client ID </th>
+									<th> Transaction Amount </th>
+									<th> Transaction Date </th>
+									<th> Transaction Description </th>
+									<th> Transaction Type </th>
+
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model)
+								{
+									<tr>
+										<td>
+											@item.WalletID
+										</td>
+										<td>
+											@item.Wallets.ClientID
+										</td>
+										<td> @item.TransactionAmount </td>
+										<td> @item.TransactionDate </td>
+										<td> @item.TransactionDescription </td>
+										<td> @item.TransactionType </td>
+										
+										<td>
+											@*											<a class="btn badge badge-gradient-success" asp-action="Edit" asp-route-id="@item.TransactionID">Edit</a>
+										*@											<a class="btn badge badge-gradient-success" asp-action="Details" asp-route-id="@item.TransactionID">Details</a>
+											<a class="btn badge badge-gradient-success" asp-action="Delete" asp-route-id="@item.TransactionID">Delete</a>
+										</td>
+
+									</tr>
+								}
+
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Electronic_Bank.Models.Currency>
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+
+<div class="row" style="margin:20px; flex-wrap: nowrap;">
+	<h1 class="col-10">Currencys</h1>
+
+	<p class="col-2">
+		<a class="btn btn-success" asp-action="Create">Create New</a>
+	</p>
+</div>
+<body style="    background: #f2edf3;">
+	<div class="row">
+		<div class="col-12 grid-margin">
+			<div class="card" style="margin:25px">
+				<div class="card-body">
+					<h4 class="card-title">Currency table</h4>
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th> Currency Name </th>
+									<th> Currency Code </th>
+									<th> Currency Price to USD </th>
+
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model)
+								{
+									<tr>
+										<td>
+											@item.CurrencyName
+										</td>
+										<td> @item.CurrencyCode </td>
+										<td> @item.CurrencyPrice </td>
+
+										<td>
+											<a class="btn badge badge-gradient-success" asp-action="Edit" asp-route-id="@item.CurrencyID">Edit</a>
+											<a class="btn badge badge-gradient-success" asp-action="Details" asp-route-id="@item.CurrencyID">Details</a>
+											<a class="btn badge badge-gradient-success" asp-action="Delete" asp-route-id="@item.CurrencyID">Delete</a>
+										</td>
+
+									</tr>
+								}
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>

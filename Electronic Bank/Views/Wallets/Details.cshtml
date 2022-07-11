@@ -1,0 +1,36 @@
+﻿@model Electronic_Bank.Models.Wallet
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Wallet</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.WalletAmount)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.WalletAmount)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Clients)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Clients.ClientName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Currencys)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Currencys.CurrencyName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.WalletID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
